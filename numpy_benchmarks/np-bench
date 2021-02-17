@@ -155,7 +155,8 @@ class XtensorExtractor(PythonExtractor):
                                   libraries=["openblas"],
                                   include_dirs=[os.path.join(sys.prefix,
                                                              'include')],
-                                  extra_compile_args=['-std=c++14', '-w']
+                                  extra_compile_args=['-std=c++14', '-w', '-march=native'],
+                                  define_macros=[('XTENSOR_USE_XSIMD', None)]
                                  )
             script_args = [] if verbose else ['--quiet']
             script_args.extend(['build_ext', '--inplace'])
